@@ -1,5 +1,5 @@
 ---
-layout: ../de/index.md
+layout: default
 locale: de
 eleventyNavigation:
   key: Home

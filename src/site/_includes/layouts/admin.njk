@@ -1,0 +1,82 @@
+{% from '../parts/macros.njk' import renderNav %}
+{% from '../parts/macros.njk' import renderLang %}
+{% from '../parts/macros.njk' import renderCrumbs %}
+{% from '../parts/macros.njk' import renderPageNav %}
+<!DOCTYPE html>
+<html lang="{% if locale == "de" %}de-DE{% elif locale == "dg" %}sgn-DE{% else %}en-US{% endif %}">
+  {% include 'parts/head.njk' %}
+  <style>
+    form,label,input,textarea,select,table{
+      width: 100%;
+    }
+    table, tr, td{
+      border:none !important;
+      padding:0;
+      margin:0;
+      vertical-align:bottom;
+    }
+    label{
+      display:block;
+      padding-bottom:2px;
+      font-weight:bold;
+    }
+    input,select,textarea{
+      margin-bottom:7px;
+      padding:4px;
+      font-size:14px;
+      border: 1px solid rgb(150,150,150);
+      border-radius:5px;
+    }
+    button{
+      padding: 5px 8px;
+      font-size: 14px;
+      text-align:center;
+      margin: 0 auto;
+      display:block;
+      cursor:pointer;
+    }
+    nav ul, nav li{
+      list-style:none;
+      margin:0;
+      padding:0;
+    }
+    nav ul {
+      display: flex;
+      flex-direction:row;
+    }
+    nav li{
+      padding-right:20px;
+    }
+    header, nav{
+      max-width: 1024px;
+      width: 90%;
+      display:block;
+      margin:0 auto;
+    }
+    a{
+      cursor:pointer;
+    }
+  </style>
+  <body>
+    <header id="header" role="banner">
+      <h1>Open Data Berlin-Brandenburg</h1>
+      <h2>Administration - {{title}}
+    </header>
+    <nav>
+      <ul>
+        <li>
+          <a href="/admin/videos/list/">List Videos</a>
+          </li>
+        <li>
+          <a href="/admin/videos/new/">New Video</a>
+          </li>
+        </ul>
+    </nav>
+    <div id="container">
+      <main role="main">
+        {{ content | safe }}
+      </main>
+    </div>
+    <script src="/js/admin.js"></script>
+  </body>
+</html>

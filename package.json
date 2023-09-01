@@ -8,7 +8,8 @@
     "dev": "cross-env ELEVENTY_ENV=dev eleventy --serve",
     "build": "cross-env ELEVENTY_ENV=prod eleventy",
     "seed": "cross-env ELEVENTY_ENV=seed eleventy",
-    "serve": "http-server ./dist"
+    "serve": "http-server ./dist",
+    "backend": "node ./dev/editor.js"
   },
   "engines": {
     "npm": ">=9.8.1",
@@ -40,7 +41,9 @@
   },
   "homepage": "https://github.com/FH-Potsdam/opendata-berlin-brandenburg#readme",
   "devDependencies": {
+    "cors": "^2.8.5",
     "cross-env": "^7.0.3",
+    "express": "^4.18.2",
     "http-server": "^14.1.1"
   }
 }

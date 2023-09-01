@@ -10,14 +10,11 @@ module.exports = function(config) {
   // A useful way to reference the context we are runing eleventy in
   let env = process.env.ELEVENTY_ENV;
 
-  // custom collection of 3d previews to generate index/json files
-  config.addCollection("preview3d", function(collection) {
-    return collection.getFilteredByGlob("./src/site/code/3d/*.md");
-  });
-
   // Layout aliases can make templates more portable
   config.addLayoutAlias('default', 'layouts/base.njk');
   config.addLayoutAlias('home', 'layouts/home.njk');
+  config.addLayoutAlias('admin', 'layouts/admin.njk');
+  config.addLayoutAlias('json', 'layouts/json.njk');
 
   // add support for syntax highlighting
   config.addPlugin(syntaxHighlight);
@@ -80,6 +77,10 @@ module.exports = function(config) {
     locale = locale ? locale : "en";
     moment.locale(locale);
     return moment(date).format(format);
+  });
+
+  config.addNunjucksFilter("stringify", function (json) {
+    return JSON.stringify(json);
   });
 
   // pass some assets right through
